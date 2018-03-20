@@ -24,10 +24,13 @@
                         <div class="card text-black savedNotes" >
                             <div class="card-header">
                                 <h6 class="articleNotes" data-id="{{this._id}}">Blog: {{this.article}}</h6>
+                                
                             </div>
                             <div class="card-body">
                                 <h7 class="noteTitle">Title: {{this.title}}</h7><br>
                                 Note: {{this.body}}
+                                <br>
+                                <button data-id="{{this._id}}" type="button" class="btn btn-outline-danger deleteNote">Delete</button>
                             </div>
                         </div>
                     </div>

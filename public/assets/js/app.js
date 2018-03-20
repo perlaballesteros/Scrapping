@@ -49,6 +49,7 @@ $(document).on("click", "#savenote", function() {
       url: "/blogs/" + thisId,
       data: {
         article:$(".articleTitle").text(),
+        articleid:thisId,
         // Value taken from title input
         title: $("#titleinput").val(),
         // Value taken from note textarea
@@ -71,5 +72,10 @@ $(document).on("click", "#savenote", function() {
   
   $(document).on("click", ".deleteNote", function() {
     var noteId=$(this).attr("data-id");
-
+  
+   $.get("/deleteblogs/"+noteId);
+    setTimeout(function() {
+      location.reload();
+    }, 500);
+   
   })
