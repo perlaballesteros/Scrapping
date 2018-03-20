@@ -1,10 +1,18 @@
-
+<div class="container-fluid">
+    <button type="button" class="btn btn-success" id="home" onclick= "window.location.href='/'">Home</button>
     <div id="blogs">
+        <h3 class="heading">Scrapped Blogs:</h3>
         {{#each headline}}
-            <div class="blogs">
-                <p data-id="{{this._id}}">{{this.title}}</p>
-                <a target="_blank" class="links" href="{{this.link}}"></a>Read Blog</a>
+        <div class="row " >
+            <div class="card text-black blog" >
+                <div class="card-header">
+                    <p data-id="{{this._id}}">{{this.title}}</p>
+                </div>
+                <div class="card-body">
+                    <a target="_blank" class="links" href="{{this.link}}">Read Blog</a>
+                </div>
             </div>
+        </div>
         {{/each}}
     </div>
     <div class="modal fade" id="notesModal" tabindex="-1" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
@@ -24,3 +32,4 @@
             </div>
         </div>
     </div>
+</div>

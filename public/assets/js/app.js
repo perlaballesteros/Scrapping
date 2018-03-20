@@ -69,3 +69,7 @@ $(document).on("click", "#savenote", function() {
     $("#notesModal").modal("hide");
   });
   
+  $(document).on("click", ".deleteNote", function() {
+    var noteId=$(this).attr("data-id");
+    
+  })

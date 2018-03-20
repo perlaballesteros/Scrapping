@@ -1,15 +1,39 @@
 <div class="container-fluid"></div>
-    <button id="scrape">Scrape</button>
-    <button id="allBlogs" onclick= "window.location.href='/allBlogs'">See All Blogs</button>
-    <div id="notesMain">
-        <h3>Saved Notes</h3>
-        {{#each savedNotes}}
-            <div class="notes">
-                <h6 class="articleNotes" data-id="{{this._id}}">Blog: {{this.article}}</h6>
-                <h7 class="noteTitle">Title: {{this.title}}</h7>
-                Note: {{this.body}}
-                </br>
-                <button class="deleteNote" data-id="{{this._id}}">Delete Note</button>
-        {{/each}}
+    <div id="mainButtons" class="jumbotron">
+        <h1 class="display-2 text-center"><i class="fas fa-graduation-cap"></i> Blog Scrapper!</h1>
+        <div class="containerForm container-fluid text-center col-lg-12">
+
+            <div class="col-sm-12 col-md-6 col-lg-6 mx-auto">
+                <button type="button" class="btn btn-success" id="scrape">Scrape</button>
+                <button type="button" class="btn btn-success" id="allBlogs" onclick= "window.location.href='/allBlogs'">See All Blogs</button>
+            </div>
+            
+        </div>
     </div>
-</div>
+     <div class="container-fluid" id="notesMain">
+        <div class="row">
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+            </div>
+            <div class="col-lg-4">
+                <h2 class="heading">Saved Notes:</h2>
+                {{#each savedNotes}}
+                <div class="row " >
+                     <div class="notes">
+                        <div class="card text-black savedNotes" >
+                            <div class="card-header">
+                                <h6 class="articleNotes" data-id="{{this._id}}">Blog: {{this.article}}</h6>
+                            </div>
+                            <div class="card-body">
+                                <h7 class="noteTitle">Title: {{this.title}}</h7><br>
+                                Note: {{this.body}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</div> 

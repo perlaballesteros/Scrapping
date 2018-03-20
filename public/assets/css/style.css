@@ -1,0 +1,26 @@
+body{
+    background-image: url("https://media.gettyimages.com/photos/blueberry-background-picture-id97129133?b=1&k=6&m=97129133&s=612x612&w=0&h=LdqJmBVlBP304y-7F545vdcC6MtzkeJ_jVm1hkmmnys=");
+    background-size: 100%;
+}
+#mainButtons{
+    background-image: url("https://images6.alphacoders.com/334/334927.jpg");
+    color:#fff;
+    background-size: 100%;
+}
+.savedNotes{
+    background-color:#a8c2e7;
+    font-weight: bold;
+    width:650px;
+    margin-bottom:10px;
+}
+.blog{
+    margin:10px;
+    width:50%;
+    font-weight: bolder;
+    background-color:#a8c2e7;
+    
+}
+.heading{
+    color:#ea344a;
+    font-weight: bolder;
+}
