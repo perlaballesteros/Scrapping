@@ -29,26 +29,47 @@ app.use(express.static("public"));
 var exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs({ defaultLayout: 'layout' }));
 app.set("view engine", "handlebars");
+// If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/week18ScrappingHw";
 
 // By default mongoose uses callbacks for async queries, we're setting it to use promises (.then syntax) instead
 // Connect to the Mongo DB
 mongoose.Promise = Promise;
-mongoose.connect("mongodb://localhost/week18ScrappingHw");
+mongoose.connect(MONGODB_URI );
 
 //home route
 app.get("/",function(req,res){
-    res.render("home");
+  db.Note.find({})
+  .then(function(dbNotes) {
+    var Notes={
+      savedNotes:dbNotes
+    }
+    // If we were able to successfully find Headlines, send them back to the client
+    res.render("home",Notes);
   });
+});
+
+//displaying all blogs
+app.get("/allBlogs",function(req,res){
+  db.Headline.find({})
+    .then(function(dbHeadline) {
+      var headlines={
+        headline:dbHeadline
+      }
+      // If we were able to successfully find Headlines, send them back to the client
+      res.render("headlines",headlines);
+    });
+})
 // A GET route for scraping the echojs website
 app.get("/scrape", function(req, res) {
   
     // First, we grab the body of the html with request
-    axios.get("http://www.vegsource.com/food/").then(function(response) {
+    axios.get("http://www.vegsource.com/blogs/").then(function(response) {
       // Then, we load that into cheerio and save it to $ for a shorthand selector
       var $ = cheerio.load(response.data);
   
       // Now, we grab every h2 within blog entry class, and do the following:
-      $(".blog_entry h2").each(function(i, element) {
+      $(".post h2").each(function(i, element) {
         // Save an empty result object
         var result = {};
   

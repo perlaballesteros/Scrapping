@@ -1,19 +1,15 @@
-<div id="blogs"></div>
-<div id="notesMain"></div>
-<div class="modal fade" id="notesModal" tabindex="-1" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title" id="modal-title">Add a New Note!</h3>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                </div>
-            <div id="notes" class="modal-body mx-auto">
-            </div>
-            <div class="modal-footer">
-                <a id = "close" class="btn btn-md" role="button" data-dismiss="modal">Close</a>
-            </div>
-        </div>
+<div class="container-fluid"></div>
+    <button id="scrape">Scrape</button>
+    <button id="allBlogs" onclick= "window.location.href='/allBlogs'">See All Blogs</button>
+    <div id="notesMain">
+        <h3>Saved Notes</h3>
+        {{#each savedNotes}}
+            <div class="notes">
+                <h6 class="articleNotes" data-id="{{this._id}}">Blog: {{this.article}}</h6>
+                <h7 class="noteTitle">Title: {{this.title}}</h7>
+                Note: {{this.body}}
+                </br>
+                <button class="deleteNote" data-id="{{this._id}}">Delete Note</button>
+        {{/each}}
     </div>
 </div>

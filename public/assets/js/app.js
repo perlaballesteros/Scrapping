@@ -1,10 +1,6 @@
-// Grab the Headlines as a json
-$.getJSON("/blogs", function(data) {
-    // For each one
-    for (var i = 0; i < data.length; i++) {
-      // Display the apropos information on the page
-      $("#blogs").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "</p>");
-    }
+$(document).on("click", "#scrape", function(){
+  $.get("/scrape");
+  
 });
 
 //Whenever someone clicks a p tag
@@ -23,7 +19,7 @@ $(document).on("click", "p", function() {
       .then(function(data) {
         console.log(data);
         // The title of the article
-        $("#notes").append("<h2>" + data.title + "</h2>");
+        $("#notes").append("<h2 class='articleTitle'>" + data.title + "</h2>");
         // An input to enter a new title
         $("#notes").append("<label for='title'>Title:</label><br><input id='titleinput' name='title' ><br>");
         // A textarea to add a new note body
@@ -52,6 +48,7 @@ $(document).on("click", "#savenote", function() {
       method: "POST",
       url: "/blogs/" + thisId,
       data: {
+        article:$(".articleTitle").text(),
         // Value taken from title input
         title: $("#titleinput").val(),
         // Value taken from note textarea
