@@ -10,7 +10,7 @@ $(document).on("click", "p", function() {
     // Save the id from the p tag
     var thisId = $(this).attr("data-id");
   
-    // Now make an ajax call for the Article
+    // Now make an ajax call for the blog
     $.ajax({
       method: "GET",
       url: "/blogs/" + thisId
@@ -71,5 +71,5 @@ $(document).on("click", "#savenote", function() {
   
   $(document).on("click", ".deleteNote", function() {
     var noteId=$(this).attr("data-id");
-    
+
   })
